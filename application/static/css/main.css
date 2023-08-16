@@ -20,3 +20,13 @@
 }
 
 @import "https://fonts.googleapis.com/css?family=Raleway:100,400,700";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+  /* background-color: #ccc; */
+}

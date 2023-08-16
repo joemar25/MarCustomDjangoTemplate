@@ -11,11 +11,15 @@
     <meta name="Keywords" content="portfolio, joemar, template, html, css, js, django" />
     <meta name="Author" content="joemar25" />
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
 
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+    
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
+  <body class="container">
     {% block content %} {% endblock %}
     <script src="{% static 'js/main.js' %}"></script>
   </body>

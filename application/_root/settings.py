@@ -4,7 +4,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^q#4_h0(o^k@rawy*2=e0uv78xy%ys5!)g73lpq(_-@@429!)b'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 # Open the settings.py file and look for the INSTALLED_APPS list
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -79,9 +79,11 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
+
 # mar - custom
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
