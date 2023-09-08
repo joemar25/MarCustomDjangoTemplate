@@ -81,7 +81,7 @@ USE_I18N = True
 USE_TZ = True
 
 # mar - custom
-STATIC_URL = '/static/'
+STATIC_URL = 'application/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
