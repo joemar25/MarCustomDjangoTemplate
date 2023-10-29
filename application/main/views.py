@@ -1,12 +1,13 @@
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 
+
 def index(request):
-    context = {'blogs': 'blogs'}
+    context = {"data": "content value"}
 
     """_summary_
 
     call the context by the variable name they were in:
-    e.g. blogs, no need for context['blogs']
+    e.g. in blogs website, no need for context['data']
     """
-    return render(request, 'blogs/index.html', context)
+    return render(request, "main/index.html", context)

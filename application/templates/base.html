@@ -3,25 +3,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="Description" content="Joemar's Website" />
-    <meta name="Keywords" content="portfolio, joemar, template, html, css, js, django" />
-    <meta name="Author" content="joemar25" />
-    <title>{% block title %} {% endblock %}</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="Description" content="Joemar's Website" />
+  <meta name="Keywords" content="portfolio, joemar, template, html, css, js, django" />
+  <meta name="Author" content="joemar25" />
+  <title>{% block title %} {% endblock %}</title>
 
-    <!-- custom css -->
-    <link rel="stylesheet" type="text/css" href="{%static 'css/main.css'%}" />
-    
-    <!-- tailwind css -->
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+  <!-- custom css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
 
-  <body class="container">
-    {% block content %} {% endblock %}
-    <script src="{% static 'js/main.js' %}"></script>
-  </body>
+  <!-- tailwind css -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="container">
+  {% block content %} {% endblock %}
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
 
 </html>

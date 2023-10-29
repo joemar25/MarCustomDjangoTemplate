@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Add your apps here
-    'application.blogs',
+    'application.main',
 ]
 
 MIDDLEWARE = [
@@ -81,9 +81,17 @@ USE_I18N = True
 USE_TZ = True
 
 # mar - custom
-STATIC_URL = 'application/static/'
+STATIC_URL = "application/static/"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, "static"),
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# DataFlair # Local Memory Cache - mar
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "DataFlair",
+    }
+}
