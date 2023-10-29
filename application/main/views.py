@@ -1,9 +1,10 @@
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
+from .helpers.function import try_me
 
 
 def index(request):
-    context = {"data": "content value"}
+    context = {"data": "content value", "function_data": try_me()}
 
     """_summary_
 
