@@ -1,4 +1,1 @@
-# DailyBlog
-
-is made for me
-
+You may use this Custom-Django Template I made, which is simplified, and I found efficient when handling you're own API's. 
