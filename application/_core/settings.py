@@ -3,7 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-^q#4_h0(o^k@rawy*2=e0uv78xy%ys5!)g73lpq(_-@@429!)b"
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Open the settings.py file and look for the INSTALLED_APPS list
