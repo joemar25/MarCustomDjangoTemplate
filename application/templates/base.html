@@ -13,10 +13,10 @@
   <title>{% block title %} {% endblock %}</title>
 
   <!-- custom css -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+  {% include 'head/general-css.html' %}
 
-  <!-- tailwind css -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- custom scripts -->
+  {% include 'head/general-js.html' %}
 </head>
 
 <body class="container">

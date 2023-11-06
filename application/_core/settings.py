@@ -3,7 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-^q#4_h0(o^k@rawy*2=e0uv78xy%ys5!)g73lpq(_-@@429!)b"
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 # Open the settings.py file and look for the INSTALLED_APPS list
@@ -29,7 +29,7 @@ MIDDLEWARE = [
 ]
 
 # mar - custom
-ROOT_URLCONF = "application._root.urls"
+ROOT_URLCONF = "application._core.urls"
 
 TEMPLATES = [
     {
@@ -50,13 +50,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "application._root.wsgi.application"
+WSGI_APPLICATION = "application._core.wsgi.application"
 
 # mar - custom
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "_root/database/db.sqlite3",
+        "NAME": BASE_DIR / "_core/database/db.sqlite3",
     }
 }
 
@@ -82,9 +82,14 @@ USE_TZ = True
 
 # Mar: Custom Static File Area for CSS & JS
 STATIC_URL = "application/static/"
+
+# for local static files locator
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    BASE_DIR / "static",
 ]
+
+# for tailwind css local
+STATIC_ROOT = BASE_DIR.parent / "local-cdn" / "static"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

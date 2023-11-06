@@ -6,3 +6,4 @@ References:
 
 Tailwind CSS + Django Best Documentation, https://www.youtube.com/watch?v=lsQVukhwpqQ
 dev vs. prod static files, https://www.youtube.com/watch?v=QTb5fK1SiFU and https://www.youtube.com/watch?v=AeCZvXZn5dg
+alternative for dev and prod mode, https://www.youtube.com/watch?v=97UQM-Cfhxs
