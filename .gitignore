@@ -164,3 +164,4 @@ cython_debug/
 *.txt
 /.vscode
 /node_modules
+*.Identifier
