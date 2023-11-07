@@ -12,3 +12,7 @@ def index(request):
     e.g. in blogs website, no need for context['data']
     """
     return render(request, "main/index.html", context)
+
+
+def main(request):
+    return render(request, "main/guest/index.html")
