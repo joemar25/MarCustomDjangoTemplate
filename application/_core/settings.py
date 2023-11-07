@@ -36,9 +36,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
     # Mar: For production, we use whitenoice, just above security
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -100,8 +100,10 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
+
 # Mar: Custom Static File Area for CSS & JS
 STATIC_URL = "application/static/"
+STATIC_ROOT = BASE_DIR.parent / "static"
 
 # for local static files locator for each application created
 STATICFILES_DIRS = [
@@ -110,7 +112,7 @@ STATICFILES_DIRS = [
 
 # for tailwind css local [for use of the python manage.py collectstatic]
 # in production, we need a cdn files (contents delivery network)
-STATIC_ROOT = BASE_DIR.parent / "production-cdn" / "static"
+# STATIC_ROOT = BASE_DIR.parent / "production-cdn" / "static"
 
 # Mar: for whitenoise storage
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
