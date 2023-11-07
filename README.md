@@ -4,6 +4,20 @@ all goods as initial & has admin (currently hidden)
 
 References:
 
-Tailwind CSS + Django Best Documentation, https://www.youtube.com/watch?v=lsQVukhwpqQ
-dev vs. prod static files, https://www.youtube.com/watch?v=QTb5fK1SiFU and https://www.youtube.com/watch?v=AeCZvXZn5dg
-alternative for dev and prod mode, https://www.youtube.com/watch?v=97UQM-Cfhxs
+Tailwind CSS + Django Best Documentation, <https://www.youtube.com/watch?v=lsQVukhwpqQ>
+dev vs. prod static files, <https://www.youtube.com/watch?v=QTb5fK1SiFU> and <https://www.youtube.com/watch?v=AeCZvXZn5dg>
+alternative for dev and prod mode, <https://www.youtube.com/watch?v=97UQM-Cfhxs>
+
+Learnings this 2 days
+Proper Installation of Tailwind css in Django
+Learning about HTMX, simplicify of js to html: <https://www.youtube.com/watch?v=r-GSGH2RxJs>
+
+Deploying with correct static files (dev vs. prod)
+    static files on deployment is not recommended, ineffecient, and not secure
+    for storage i will not digital ocean cloud service since it is not free
+    i try the dropbox atleast i have 2gb free storage
+    for security this project is good since it hides the private static to a public place safely
+    without compromising the application
+
+using dropbox
+    <https://www.youtube.com/watch?v=06-SHqiEDVw>

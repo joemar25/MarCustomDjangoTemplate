@@ -83,13 +83,14 @@ USE_TZ = True
 # Mar: Custom Static File Area for CSS & JS
 STATIC_URL = "application/static/"
 
-# for local static files locator
+# for local static files locator for each application created
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# for tailwind css local
-STATIC_ROOT = BASE_DIR.parent / "local-cdn" / "static"
+# for tailwind css local [for use of the python manage.py collectstatic]
+# in production, we need a cdn files (contents delivery network)
+STATIC_ROOT = BASE_DIR.parent / "production-cdn" / "static"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
