@@ -5,11 +5,18 @@
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv as env_load
 
+# Load environment variables
+env_load()
+
+# Mar - using the .env file
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = "django-insecure-^q#4_h0(o^k@rawy*2=e0uv78xy%ys5!)g73lpq(_-@@429!)b"
-DEBUG = True
-ALLOWED_HOSTS = ["*"]
+SECRET_KEY = os.getenv("SECRET_KEY", "default_secret_key")
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
+
+# separate the hosts with a space
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 
 # Open the settings.py file and look for the INSTALLED_APPS list
 INSTALLED_APPS = [
@@ -18,6 +25,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    # Mar: For production, we use whitenoice, just above static
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     # Mar: Apps here - Internal
     "django_htmx",
@@ -28,6 +37,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    # Mar: For production, we use whitenoice, just above security
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -100,6 +111,9 @@ STATICFILES_DIRS = [
 # for tailwind css local [for use of the python manage.py collectstatic]
 # in production, we need a cdn files (contents delivery network)
 STATIC_ROOT = BASE_DIR.parent / "production-cdn" / "static"
+
+# Mar: for whitenoise storage
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
