@@ -1,0 +1,22 @@
+<!-- Logic in the Global Navigation -->
+
+{% if request.resolver_match.view_name != 'index' and request.resolver_match.view_name != '' %}
+
+<a hx-get="{% url 'index' %}" hx-push-url="true">
+    Home
+</a>
+<!-- javascript:history.back() -->
+
+{% else %}
+
+<a hx-get="{% url 'main' %}" hx-push-url="true">
+    Main
+</a>
+
+<a href="{% url 'admin:index' %}" hx-push-url="true">
+    Admin
+</a>
+
+{% endif %}
+
+<hr>

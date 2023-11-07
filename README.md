@@ -13,6 +13,7 @@ Proper Installation of Tailwind css in Django
 Learning about HTMX, simplicify of js to html: <https://www.youtube.com/watch?v=r-GSGH2RxJs>
 https://www.youtube.com/watch?v=h9sxlkdMTeA
 easy installation of htmx, https://htmx.org/
+add the structure in thesis the diagram for the python, django, and htmx
 
 Deploying with correct static files (dev vs. prod)
     static files on deployment is not recommended, ineffecient, and not secure
@@ -23,3 +24,17 @@ Deploying with correct static files (dev vs. prod)
 
 using dropbox
     <https://www.youtube.com/watch?v=06-SHqiEDVw>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
