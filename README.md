@@ -6,3 +6,7 @@ all goods as initial & has admin (currently hidden)
 
 
 
+
+page animation loader
+
+https://loading.io/
