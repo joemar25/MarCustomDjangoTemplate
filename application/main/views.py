@@ -15,4 +15,5 @@ def index(request):
 
 
 def main(request):
-    return render(request, "main/guest/index.html")
+    context = {"data": "content value", "function_data": try_me()}
+    return render(request, "main/guest/index.html", context)
