@@ -4,6 +4,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,11 +18,43 @@
 
   <!-- custom scripts -->
   {% include 'head/general-js.html' %}
+
+  <style>
+    /* .htmx-settling img {
+      opacity: 0;
+    }
+
+    img {
+      transition: opacity 300ms ease-in;
+    } */
+  </style>
 </head>
 
-<body class="container">
-  {% block content %} {% endblock %}
-  <script src="{% static 'js/main.js' %}"></script>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+  <!-- Navigation -->
+  {% if request.resolver_match.view_name != 'index' and request.resolver_match.view_name != '' %}
+  <nav class="bg-white shadow">
+    <div class="container mx-auto px-4">
+      <a href="{% url 'index' %}" class="text-gray-800 font-bold py-4">Home</a>
+    </div>
+    <!-- javascript:history.back() -->
+  </nav>
+  {% endif %}
+
+  <!-- Loading indicator -->
+  <div class="flex-grow flex items-center justify-center">
+    <img alt="Loading..." width="150" src="{% static 'img/loading-loader.gif' %}" class="mx-auto" />
+  </div>
+
+  <!-- Main content -->
+  <main class="container mx-auto px-4 flex-grow">
+    {% block content %} {% endblock %}
+  </main>
+
+  <!-- Custom scripts -->
+  {% include 'foot/general-js.html' %}
+
 </body>
 
 </html>

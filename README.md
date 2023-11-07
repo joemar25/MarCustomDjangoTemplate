@@ -11,6 +11,8 @@ alternative for dev and prod mode, <https://www.youtube.com/watch?v=97UQM-Cfhxs>
 Learnings this 2 days
 Proper Installation of Tailwind css in Django
 Learning about HTMX, simplicify of js to html: <https://www.youtube.com/watch?v=r-GSGH2RxJs>
+https://www.youtube.com/watch?v=h9sxlkdMTeA
+easy installation of htmx, https://htmx.org/
 
 Deploying with correct static files (dev vs. prod)
     static files on deployment is not recommended, ineffecient, and not secure

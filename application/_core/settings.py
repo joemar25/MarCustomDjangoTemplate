@@ -1,3 +1,8 @@
+"""
+    Mar: This is a customized settings.py file for the Template in our Django app.
+         You may change the settings here to suit your needs.
+"""
+
 import os
 from pathlib import Path
 
@@ -14,7 +19,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Mar: Apps here - If you add an application in the 'application folder', add here
+    # Mar: Apps here - Internal
+    "django_htmx",
+    # Mar: Apps here - Third Party
     "application.main",
 ]
 
@@ -26,6 +33,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Mar: Add Here, full documentation is here: https://github.com/bigskysoftware/htmx
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 # mar - custom
