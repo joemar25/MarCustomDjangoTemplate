@@ -2,14 +2,14 @@
 
 {% if request.resolver_match.view_name != 'index' and request.resolver_match.view_name != '' %}
 
-<a hx-get="{% url 'index' %}" hx-push-url="true">
+<a hx-get="{% url 'index' %}" hx-push-url="true" class="cursor-pointer">
     Home
 </a>
 <!-- javascript:history.back() -->
 
 {% else %}
 
-<a hx-get="{% url 'main' %}" hx-push-url="true">
+<a hx-get="{% url 'main' %}" hx-push-url="true" class="cursor-pointer">
     Main
 </a>
 
@@ -19,4 +19,4 @@
 
 {% endif %}
 
-<hr>
+<hr class="bg-gray-100">
