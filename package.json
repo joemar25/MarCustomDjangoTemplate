@@ -1,6 +1,8 @@
 {
+  "name": "mar-custom-django-template",
+  "type": "module",
   "scripts": {
-    "dev": "tailwindcss -i application/static/src/tw-input.css -o application/static/css/tw.css --watch"
+    "dev": "tailwindcss -i application/static/css/css-input.css -o application/static/css/index.css --watch"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.5"
