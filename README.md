@@ -21,3 +21,6 @@ DATABASE_URL=""
 page animation loader
 
 https://loading.io/
+
+you can use your own font-awesome but here is mine that is used in this template:
+<script src="https://kit.fontawesome.com/7a54e52029.js" crossorigin="anonymous"></script>
