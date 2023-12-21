@@ -1,26 +1,35 @@
-{% if request.resolver_match.view_name != 'index' and request.resolver_match.view_name != '' %}
+<div id="navigation" class="text-upper b border-b border-gray-300 text-gray-900 dark:text-gray-100 p-4">
 
-<a hx-get="{% url 'index' %}" hx-push-url="true" class="cursor-pointer">
-    Home
-</a>
+    {% if request.resolver_match.view_name != 'index' and request.resolver_match.view_name != '' %}
 
-{% else %}
+    <button hx-get="{% url 'index' %}" hx-push-url="true"
+        class="cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-slate-100 dark:hover:bg-gray-500 dark:hover:text-white">
+        Home
+    </button>
 
-<a hx-get="{% url 'main' %}" hx-push-url="true" class="cursor-pointer">
-    Main
-</a>
+    {% else %}
 
-<a href="{% url 'admin:index' %}" hx-push-url="true">
-    Admin
-</a>
+    <button hx-get="{% url 'main' %}" hx-push-url="true"
+        class="cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-slate-100 dark:hover:bg-gray-500 dark:hover:text-white">
+        Main
+    </button>
 
-{% endif %}
+    <a href="{% url 'admin:index' %}" hx-push-url="true"
+        class="cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-slate-100 dark:hover:bg-gray-500 dark:hover:text-white">
+        Admin
+    </a>
 
-<button id="fullscreen-btn">Fullscreen</button>
+    {% endif %}
 
-<!-- Theme toggle -->
-<button id="theme-toggle" class="menu-item" title="Toggle Dark Mode">
-    Toggle Dark Mode
-</button>
+    <button id="fullscreen-btn"
+        class="cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-slate-100 dark:hover:bg-gray-500 dark:hover:text-white">
+        Fullscreen
+    </button>
 
-<hr class="bg-gray-100">
+    <button id="theme-toggle"
+        class="cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-slate-100 dark:hover:bg-gray-500 dark:hover:text-white"
+        title="Toggle Dark Mode">
+        Toggle Dark Mode
+    </button>
+
+</div>

@@ -22,16 +22,13 @@
 
 </head>
 
-<body class="bg-customLight dark:bg-gray-900 flex flex-col min-h-screen" hx-target="this">
+<body class="bg-gray-100 dark:bg-gray-900 flex flex-col min-h-screen" hx-target="this">
 
   {% include 'global-includes/loading-animation.html' %}
-
-  <!-- Main content -->
-  <main class="container mx-auto px-4 flex-grow">
-    {% include 'global-includes/navigation.html' %}
+  {% include 'global-includes/navigation.html' %}
+  <main class="container mx-auto px-4 flex-grow text-gray-900 dark:text-white">
     {% block content %} {% endblock %}
   </main>
-
   {% include 'global-includes/foot-js.html' %}
 
 </body>
