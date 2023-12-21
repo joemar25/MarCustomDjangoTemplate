@@ -2,8 +2,10 @@
 
 export default {
   content: ["./application/**/*.{html,js}"],
+  darkMode: "class",
   theme: {
     extend: {
+      // Extended color customizations, example text-brown-50, bg-customPrimary, etc.
       colors: {
         brown: {
           50: "#fdf8f6",
