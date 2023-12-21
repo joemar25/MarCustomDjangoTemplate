@@ -1,11 +1,8 @@
-<!-- Logic in the Global Navigation -->
-
 {% if request.resolver_match.view_name != 'index' and request.resolver_match.view_name != '' %}
 
 <a hx-get="{% url 'index' %}" hx-push-url="true" class="cursor-pointer">
     Home
 </a>
-<!-- javascript:history.back() -->
 
 {% else %}
 
@@ -20,5 +17,10 @@
 {% endif %}
 
 <button id="fullscreen-btn">Fullscreen</button>
+
+<!-- Theme toggle -->
+<button id="theme-toggle" class="menu-item" title="Toggle Dark Mode">
+    Toggle Dark Mode
+</button>
 
 <hr class="bg-gray-100">
