@@ -1,3 +1,5 @@
+// fullscreen_controller.js
+
 export function initFullscreen() {
   const toggleFullscreen = () => {
     const screen = document.documentElement;
