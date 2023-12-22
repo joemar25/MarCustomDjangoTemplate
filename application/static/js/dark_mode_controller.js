@@ -1,3 +1,5 @@
+// dark_mode_controller.js
+
 let darkModeInitialized = false;
 
 export function initDarkMode() {
