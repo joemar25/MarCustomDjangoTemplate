@@ -22,20 +22,21 @@ export function initDarkMode() {
 
 function handleDarkModeToggle(event) {
   const themeToggleButton = document.getElementById("theme-toggle");
-  const darkIcon = document.getElementById("theme-toggle-dark-icon");
-  const lightIcon = document.getElementById("theme-toggle-light-icon");
-
   if (themeToggleButton && event.target === themeToggleButton) {
     // Toggle theme only if the click is on the theme toggle button
-    const darkModeEnabled = document.documentElement.classList.contains("dark");
-    document.documentElement.classList.toggle("dark", !darkModeEnabled);
-
-    // Update the icon visibility and class based on the new theme
-    updateThemeToggleIcons(!darkModeEnabled);
-
-    // Update the local storage based on the new theme
-    updateLocalStorageTheme(!darkModeEnabled);
+    toggleTheme();
   }
+}
+
+function toggleTheme() {
+  const darkModeEnabled = document.documentElement.classList.contains("dark");
+  document.documentElement.classList.toggle("dark", !darkModeEnabled);
+
+  // Update the icon visibility and class based on the new theme
+  updateThemeToggleIcons(!darkModeEnabled);
+
+  // Update the local storage based on the new theme
+  updateLocalStorageTheme(!darkModeEnabled);
 }
 
 function updateLocalStorageTheme(darkModeEnabled) {
@@ -47,21 +48,7 @@ export function updateThemeToggleIcons(darkModeEnabled) {
   const darkIcon = document.getElementById("theme-toggle-dark-icon");
   const lightIcon = document.getElementById("theme-toggle-light-icon");
 
-  // Set initial visibility of icons based on the current theme
+  // Toggle visibility of icons based on the current theme
   darkIcon.style.display = darkModeEnabled ? "none" : "inline-block";
   lightIcon.style.display = darkModeEnabled ? "inline-block" : "none";
-
-  // Add click event listeners to the icons
-  darkIcon.addEventListener("click", () => {
-    document.documentElement.classList.add("dark");
-    updateLocalStorageTheme(true);
-    updateThemeToggleIcons(true); // Update icons
-  });
-
-  lightIcon.addEventListener("click", () => {
-    document.documentElement.classList.remove("dark");
-    updateLocalStorageTheme(false);
-    updateThemeToggleIcons(false); // Update icons
-  });
 }
-// last update

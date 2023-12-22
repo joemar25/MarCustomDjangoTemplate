@@ -22,9 +22,6 @@ export function initDarkMode() {
 
 function handleDarkModeToggle(event) {
   const themeToggleButton = document.getElementById("theme-toggle");
-  const darkIcon = document.getElementById("theme-toggle-dark-icon");
-  const lightIcon = document.getElementById("theme-toggle-light-icon");
-
   if (themeToggleButton && event.target === themeToggleButton) {
     // Toggle theme only if the click is on the theme toggle button
     const darkModeEnabled = document.documentElement.classList.contains("dark");
@@ -44,6 +41,7 @@ function updateLocalStorageTheme(darkModeEnabled) {
 }
 
 export function updateThemeToggleIcons(darkModeEnabled) {
+  const themeToggleButton = document.getElementById("theme-toggle");
   const darkIcon = document.getElementById("theme-toggle-dark-icon");
   const lightIcon = document.getElementById("theme-toggle-light-icon");
 
@@ -51,17 +49,23 @@ export function updateThemeToggleIcons(darkModeEnabled) {
   darkIcon.style.display = darkModeEnabled ? "none" : "inline-block";
   lightIcon.style.display = darkModeEnabled ? "inline-block" : "none";
 
-  // Add click event listeners to the icons
-  darkIcon.addEventListener("click", () => {
-    document.documentElement.classList.add("dark");
-    updateLocalStorageTheme(true);
-    updateThemeToggleIcons(true); // Update icons
-  });
+  // Remove existing click event listeners
+  darkIcon.removeEventListener("click", handleDarkIconClick);
+  lightIcon.removeEventListener("click", handleLightIconClick);
 
-  lightIcon.addEventListener("click", () => {
-    document.documentElement.classList.remove("dark");
-    updateLocalStorageTheme(false);
-    updateThemeToggleIcons(false); // Update icons
-  });
+  // Add new click event listeners to the icons
+  darkIcon.addEventListener("click", handleDarkIconClick);
+  lightIcon.addEventListener("click", handleLightIconClick);
 }
-// last update
+
+function handleDarkIconClick() {
+  document.documentElement.classList.add("dark");
+  updateLocalStorageTheme(true);
+  updateThemeToggleIcons(true);
+}
+
+function handleLightIconClick() {
+  document.documentElement.classList.remove("dark");
+  updateLocalStorageTheme(false);
+  updateThemeToggleIcons(false);
+}

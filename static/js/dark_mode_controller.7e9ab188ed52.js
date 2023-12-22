@@ -47,7 +47,7 @@ export function updateThemeToggleIcons(darkModeEnabled) {
   const darkIcon = document.getElementById("theme-toggle-dark-icon");
   const lightIcon = document.getElementById("theme-toggle-light-icon");
 
-  // Set initial visibility of icons based on the current theme
+  // Toggle visibility of icons based on the current theme
   darkIcon.style.display = darkModeEnabled ? "none" : "inline-block";
   lightIcon.style.display = darkModeEnabled ? "inline-block" : "none";
 
@@ -64,4 +64,3 @@ export function updateThemeToggleIcons(darkModeEnabled) {
     updateThemeToggleIcons(false); // Update icons
   });
 }
-// last update

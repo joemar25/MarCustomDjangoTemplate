@@ -64,4 +64,3 @@ export function updateThemeToggleIcons(darkModeEnabled) {
     updateThemeToggleIcons(false); // Update icons
   });
 }
-// last update
