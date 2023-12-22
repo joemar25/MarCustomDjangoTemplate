@@ -1,5 +1,7 @@
 // htmx controller.js
 
+console.log("i hate u too");
+
 import { initFullscreen, updateFullscreen } from "./full_screen_controller.js";
 import { initDarkMode } from "./dark_mode_controller.js";
 

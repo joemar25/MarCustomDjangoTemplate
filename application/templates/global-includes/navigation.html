@@ -14,10 +14,13 @@
         Main
     </button>
 
-    <a href="{% url 'admin:index' %}" title="Go to Admin Page" hx-push-url="true"
+    {% url 'admin:index' as admin_url %}
+    {% if admin_url %}
+    <a href="{{ admin_url }}" title="Go to Admin Page" hx-push-url="true"
         class="cursor-pointer px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-slate-100 dark:hover:bg-gray-500 dark:hover:text-white">
         Admin
     </a>
+    {% endif %}
 
     {% endif %}
 
