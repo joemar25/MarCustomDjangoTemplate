@@ -69,15 +69,31 @@ export function updateThemeToggleIcons(darkModeEnabled) {
   const darkIcon = document.getElementById("theme-toggle-dark-icon");
   const lightIcon = document.getElementById("theme-toggle-light-icon");
 
+  // Remove existing click event listeners
+  darkIcon.removeEventListener("click", handleDarkIconClick);
+  lightIcon.removeEventListener("click", handleLightIconClick);
+
   // Set initial visibility of icons based on the current theme
   darkIcon.style.display = darkModeEnabled ? "none" : "inline-block";
   lightIcon.style.display = darkModeEnabled ? "inline-block" : "none";
 
-  // Get the select element for theme in the settings modal
-  const themeSelect = document.getElementById("theme");
+  // Add new click event listeners
+  darkIcon.addEventListener("click", handleDarkIconClick);
+  lightIcon.addEventListener("click", handleLightIconClick);
+}
 
-  // Set the selected option based on the current theme
-  themeSelect.value = darkModeEnabled ? "dark" : "light";
+function handleDarkIconClick() {
+  document.documentElement.classList.add("dark");
+  updateLocalStorageTheme(true);
+  updateThemeToggleIcons(true); // Update icons
+  updateThemeSelect("dark"); // Update theme select in settings modal
+}
+
+function handleLightIconClick() {
+  document.documentElement.classList.remove("dark");
+  updateLocalStorageTheme(false);
+  updateThemeToggleIcons(false); // Update icons
+  updateThemeSelect("light"); // Update theme select in settings modal
 }
 
 function updateThemeSelect(theme) {
