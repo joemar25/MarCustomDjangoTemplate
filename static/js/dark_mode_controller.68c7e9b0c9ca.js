@@ -54,9 +54,6 @@ function handleDarkModeToggle(event) {
 
     // Update the local storage based on the new theme
     updateLocalStorageTheme(!darkModeEnabled);
-
-    // Update the theme selection in the settings modal
-    updateThemeSelect(!darkModeEnabled ? "dark" : "light");
   }
 }
 
@@ -73,20 +70,26 @@ export function updateThemeToggleIcons(darkModeEnabled) {
   darkIcon.style.display = darkModeEnabled ? "none" : "inline-block";
   lightIcon.style.display = darkModeEnabled ? "inline-block" : "none";
 
-  // Get the select element for theme in the settings modal
-  const themeSelect = document.getElementById("theme");
+  // Add click event listeners to the icons
+  darkIcon.addEventListener("click", () => {
+    document.documentElement.classList.add("dark");
+    updateLocalStorageTheme(true);
+    updateThemeToggleIcons(true); // Update icons
+    updateThemeSelect("dark"); // Update theme select in settings modal
+  });
 
-  // Set the selected option based on the current theme
-  themeSelect.value = darkModeEnabled ? "dark" : "light";
+  lightIcon.addEventListener("click", () => {
+    document.documentElement.classList.remove("dark");
+    updateLocalStorageTheme(false);
+    updateThemeToggleIcons(false); // Update icons
+    updateThemeSelect("light"); // Update theme select in settings modal
+  });
 }
 
-function updateThemeSelect(theme) {
+export function updateThemeSelect(theme) {
   // Get the select element for theme in the settings modal
   const themeSelect = document.getElementById("theme");
 
   // Set the selected option based on the specified theme
   themeSelect.value = theme;
-
-  // Trigger a change event to update the displayed value in the modal
-  themeSelect.dispatchEvent(new Event("change"));
 }
