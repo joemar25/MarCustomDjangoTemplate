@@ -7,6 +7,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("home/", views.index, name="index"),
     path("index/", views.index, name="index"),
+    path("settings/", views.settings, name="settings"),
     path("guest/", views.main, name="main"),
     path("guest/index/", views.main, name="main"),
     # path('create/', views.create, name='create'),

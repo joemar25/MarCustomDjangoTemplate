@@ -5,6 +5,7 @@
     "dev": "tailwindcss -i application/static/css/css-input.css -o application/static/css/index.css --watch"
   },
   "devDependencies": {
+    "daisyui": "^4.4.23",
     "tailwindcss": "^3.3.5"
   }
 }
