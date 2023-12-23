@@ -61,6 +61,14 @@ export function updateThemeToggleIcons(darkModeEnabled) {
     updateLocalStorageTheme(false);
     updateThemeToggleIcons(false); // Update icons
   });
+
+  // Change the icons inside the button based on previous settings
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    themeToggleLightIcon.classList.remove('hidden');
+  } else {
+    themeToggleDarkIcon.classList.remove('hidden');
+  }
 }
-// last updateed: 2021-08-04T18:00:00Z
-// Path: application/static/js/full_screen_controller.js

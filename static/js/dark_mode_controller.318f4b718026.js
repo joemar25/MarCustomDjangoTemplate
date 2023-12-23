@@ -22,6 +22,8 @@ export function initDarkMode() {
 
 function handleDarkModeToggle(event) {
   const themeToggleButton = document.getElementById("theme-toggle");
+  const darkIcon = document.getElementById("theme-toggle-dark-icon");
+  const lightIcon = document.getElementById("theme-toggle-light-icon");
 
   if (themeToggleButton && event.target === themeToggleButton) {
     // Toggle theme only if the click is on the theme toggle button
@@ -46,21 +48,24 @@ export function updateThemeToggleIcons(darkModeEnabled) {
   const lightIcon = document.getElementById("theme-toggle-light-icon");
 
   // Set initial visibility of icons based on the current theme
-  darkIcon.style.display = darkModeEnabled ? "none" : "inline-block";
-  lightIcon.style.display = darkModeEnabled ? "inline-block" : "none";
-
+  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    lightIcon.classList.remove('hidden');
+  } else {
+    darkIcon.classList.remove('hidden');
+  }
   // Add click event listeners to the icons
   darkIcon.addEventListener("click", () => {
     document.documentElement.classList.add("dark");
+    lightIcon.classList.toggle("hidden");
     updateLocalStorageTheme(true);
     updateThemeToggleIcons(true); // Update icons
   });
-
+  
   lightIcon.addEventListener("click", () => {
     document.documentElement.classList.remove("dark");
+    darkIcon.classList.toggle("hidden");
     updateLocalStorageTheme(false);
     updateThemeToggleIcons(false); // Update icons
   });
 }
-// last updateed: 2021-08-04T18:00:00Z
-// Path: application/static/js/full_screen_controller.js
+// last update

@@ -22,6 +22,15 @@ export function initDarkMode() {
 
 function handleDarkModeToggle(event) {
   const themeToggleButton = document.getElementById("theme-toggle");
+  var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+// Change the icons inside the button based on previous settings
+if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  themeToggleLightIcon.classList.remove('hidden');
+} else {
+  themeToggleDarkIcon.classList.remove('hidden');
+}
 
   if (themeToggleButton && event.target === themeToggleButton) {
     // Toggle theme only if the click is on the theme toggle button
@@ -62,5 +71,4 @@ export function updateThemeToggleIcons(darkModeEnabled) {
     updateThemeToggleIcons(false); // Update icons
   });
 }
-// last updateed: 2021-08-04T18:00:00Z
-// Path: application/static/js/full_screen_controller.js
+// last update

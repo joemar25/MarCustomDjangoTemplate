@@ -27,6 +27,8 @@ function handleDarkModeToggle(event) {
     // Toggle theme only if the click is on the theme toggle button
     const darkModeEnabled = document.documentElement.classList.contains("dark");
     document.documentElement.classList.toggle("dark", !darkModeEnabled);
+    themeToggleDarkIcon.classList.toggle('hidden');
+  themeToggleLightIcon.classList.toggle('hidden');
 
     // Update the icon visibility and class based on the new theme
     updateThemeToggleIcons(!darkModeEnabled);
@@ -62,5 +64,4 @@ export function updateThemeToggleIcons(darkModeEnabled) {
     updateThemeToggleIcons(false); // Update icons
   });
 }
-// last updateed: 2021-08-04T18:00:00Z
-// Path: application/static/js/full_screen_controller.js
+// last update
