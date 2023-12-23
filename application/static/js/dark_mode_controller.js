@@ -7,16 +7,37 @@ export function initDarkMode() {
     darkModeInitialized = true;
 
     // Check for saved theme preference or use the system preference
-    const darkModeEnabled =
-      localStorage.getItem("color-theme") === "dark" ||
-      (!("color-theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const savedTheme = localStorage.getItem("color-theme");
+    const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    // Determine the initial theme based on saved preference, system preference, or default to dark
+    const darkModeEnabled = savedTheme === "dark" || (!savedTheme && systemDarkMode);
 
     // Update the icon visibility and class based on the theme
     updateThemeToggleIcons(darkModeEnabled);
 
+    // Apply the previous theme settings
+    applyPreviousThemeSettings(savedTheme, darkModeEnabled);
+
     // Attach the click event listener to the body (event delegation)
     document.body.addEventListener("click", handleDarkModeToggle);
+  }
+}
+
+function applyPreviousThemeSettings(savedTheme, darkModeEnabled) {
+  // if set via local storage previously
+  if (savedTheme) {
+    document.documentElement.classList.toggle("dark", darkModeEnabled);
+    localStorage.setItem("color-theme", darkModeEnabled ? "dark" : "light");
+  } else {
+    // if NOT set via local storage previously
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("color-theme", "light");
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("color-theme", "dark");
+    }
   }
 }
 
@@ -62,5 +83,3 @@ export function updateThemeToggleIcons(darkModeEnabled) {
     updateThemeToggleIcons(false); // Update icons
   });
 }
-// last updateed: 2021-08-04T18:00:00Z
-// Path: application/static/js/full_screen_controller.js
