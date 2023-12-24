@@ -62,6 +62,7 @@ function loadThemeOptions() {
   ];
 
   const settingsThemeSelector = document.getElementById("theme-selector");
+  // const navigationThemeSelector = document.getElementById("nav-theme-selector");
 
   // Check if localStorage is available and accessible
   if (typeof Storage !== "undefined") {
@@ -70,6 +71,7 @@ function loadThemeOptions() {
 
     // Clear existing options
     settingsThemeSelector.innerHTML = "";
+    // navigationThemeSelector.innerHTML = "";
 
     // Add theme options
     themeValues.forEach((theme) => {
@@ -83,6 +85,7 @@ function loadThemeOptions() {
       }
 
       settingsThemeSelector.appendChild(option);
+      // navigationThemeSelector.appendChild(option.cloneNode(true)); // Clone the option for the navigation selector
     });
 
     // Add a "none" option to the navigation theme selector
@@ -94,6 +97,8 @@ function loadThemeOptions() {
     if (!themeValues.includes(currentTheme)) {
       noneOption.selected = true;
     }
+
+    // navigationThemeSelector.appendChild(noneOption);
   } else {
     console.error(
       "localStorage is not available. Theme persistence may not work."

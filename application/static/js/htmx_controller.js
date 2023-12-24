@@ -2,7 +2,30 @@
 import { themeChange } from "theme-change";
 import { initFullscreen, updateFullscreen } from "./full_screen_controller.js";
 
-window.onload = function () {
+// Function to handle htmx afterSwap event
+function handleAfterSwap(event) {
+  console.log("htmx:afterSwap event triggered");
+  // Assuming themeChange has a function to toggle themes
+  themeChange(); // Adjust this based on the actual API of theme-change
+  updateFullscreen();
+  setupHtmxEventListeners();
+
+  // Load theme options after htmx page load
+  loadThemeOptions();
+}
+
+// Function to set up htmx event listeners
+function setupHtmxEventListeners() {
+  console.log("Setting up htmx event listeners");
+  // Remove existing event listeners before adding new ones
+  document.body.removeEventListener("htmx:afterSwap", handleAfterSwap);
+  document.body.addEventListener("htmx:afterSwap", handleAfterSwap);
+
+  // Add your dynamic content initialization here if needed
+}
+
+// Function to load theme options
+function loadThemeOptions() {
   const themeValues = [
     "dark",
     "light",
@@ -38,39 +61,64 @@ window.onload = function () {
     "sunset",
   ];
 
-  const themeSelector = document.getElementById("theme-selector");
+  const settingsThemeSelector = document.getElementById("theme-selector");
 
-  themeValues.forEach((theme) => {
-    const option = document.createElement("option");
-    option.value = theme;
-    option.text = theme;
-    themeSelector.appendChild(option);
-  });
-};
+  // Check if localStorage is available and accessible
+  if (typeof Storage !== "undefined") {
+    // Retrieve the current theme from localStorage
+    const currentTheme = localStorage.getItem("theme");
 
-// Function to handle htmx afterSwap event
-function handleAfterSwap(event) {
-  console.log("htmx:afterSwap event triggered");
-  // Assuming themeChange has a function to toggle themes
-  themeChange(); // Adjust this based on the actual API of theme-change
-  updateFullscreen();
-  setupHtmxEventListeners();
+    // Clear existing options
+    settingsThemeSelector.innerHTML = "";
+
+    // Add theme options
+    themeValues.forEach((theme) => {
+      const option = document.createElement("option");
+      option.value = theme;
+      option.text = theme;
+
+      // Set the selected attribute if it's the current theme
+      if (theme === currentTheme) {
+        option.selected = true;
+      }
+
+      settingsThemeSelector.appendChild(option);
+    });
+
+    // Add a "none" option to the navigation theme selector
+    const noneOption = document.createElement("option");
+    noneOption.value = "none";
+    noneOption.text = "Theme";
+
+    // Set the selected attribute if the current theme is not in the list
+    if (!themeValues.includes(currentTheme)) {
+      noneOption.selected = true;
+    }
+  } else {
+    console.error(
+      "localStorage is not available. Theme persistence may not work."
+    );
+  }
 }
 
-// Initialize everything when DOM is loaded
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOMContentLoaded event triggered");
+// Function to initialize the page
+function initializePage() {
+  console.log("Page loaded");
   initFullscreen();
   setupHtmxEventListeners();
-
-  // Check if themeChange has an init function
   themeChange(false); // Initialize the theme-change
+
+  // Load theme options on the initial page load
+  loadThemeOptions();
+}
+
+// Initial page load
+initializePage();
+
+// Handle htmx navigation for subsequent page loads
+document.body.addEventListener("htmx:load", function () {
+  initializePage();
 });
 
-// Function to set up htmx event listeners
-function setupHtmxEventListeners() {
-  console.log("Setting up htmx event listeners");
-  // Remove existing event listeners before adding new ones
-  document.body.removeEventListener("htmx:afterSwap", handleAfterSwap);
-  document.body.addEventListener("htmx:afterSwap", handleAfterSwap);
-}
+// Handle theme change event (if the library provides a callback)
+themeChange(); // Replace with the actual function or event provided by theme-change
