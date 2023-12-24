@@ -1,43 +1,76 @@
-// htmx controller.js
-
+// htmx_controller.js
+import { themeChange } from "theme-change";
 import { initFullscreen, updateFullscreen } from "./full_screen_controller.js";
-import {
-  initDarkMode,
-  applyDarkMode,
-  updateThemeToggleIcons,
-} from "./dark_mode_controller.js";
 
-function handleSaveChangesClick() {
-  const selectedTheme = document.getElementById("theme").value;
-  localStorage.setItem("color-theme", selectedTheme);
-  applyDarkMode(selectedTheme);
-}
+window.onload = function () {
+  const themeValues = [
+    "dark",
+    "light",
+    "cupcake",
+    "bumblebee",
+    "emerald",
+    "corporate",
+    "synthwave",
+    "retro",
+    "cyberpunk",
+    "valentine",
+    "halloween",
+    "garden",
+    "forest",
+    "aqua",
+    "lofi",
+    "pastel",
+    "fantasy",
+    "wireframe",
+    "black",
+    "luxury",
+    "dracula",
+    "cmyk",
+    "autumn",
+    "business",
+    "acid",
+    "lemonade",
+    "night",
+    "coffee",
+    "winter",
+    "dim",
+    "nord",
+    "sunset",
+  ];
 
+  const themeSelector = document.getElementById("theme-selector");
+
+  themeValues.forEach((theme) => {
+    const option = document.createElement("option");
+    option.value = theme;
+    option.text = theme;
+    themeSelector.appendChild(option);
+  });
+};
+
+// Function to handle htmx afterSwap event
 function handleAfterSwap(event) {
-  initDarkMode();
+  console.log("htmx:afterSwap event triggered");
+  // Assuming themeChange has a function to toggle themes
+  themeChange(); // Adjust this based on the actual API of theme-change
   updateFullscreen();
-
-  // Wait for a short delay before updating the icons
-  setTimeout(() => {
-    applyDarkMode(localStorage.getItem("color-theme"));
-    updateThemeToggleIcons(localStorage.getItem("color-theme") === "dark");
-    setupHtmxEventListeners(); // Re-setup event listeners after content swap
-  }, 50);
+  setupHtmxEventListeners();
 }
 
+// Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOMContentLoaded event triggered");
   initFullscreen();
-  initDarkMode();
-  applyDarkMode(localStorage.getItem("color-theme"));
   setupHtmxEventListeners();
+
+  // Check if themeChange has an init function
+  themeChange(false); // Initialize the theme-change
 });
 
+// Function to set up htmx event listeners
 function setupHtmxEventListeners() {
+  console.log("Setting up htmx event listeners");
   // Remove existing event listeners before adding new ones
   document.body.removeEventListener("htmx:afterSwap", handleAfterSwap);
   document.body.addEventListener("htmx:afterSwap", handleAfterSwap);
-
-  // Add the click event listener to the "Save Changes" button
-  const saveChangesBtn = document.getElementById("saveChangesBtn");
-  saveChangesBtn.addEventListener("click", handleSaveChangesClick);
 }

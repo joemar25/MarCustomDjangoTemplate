@@ -2,10 +2,16 @@
   "name": "mar-custom-django-template",
   "type": "module",
   "scripts": {
-    "dev": "tailwindcss -i application/static/css/css-input.css -o application/static/css/index.css --watch"
+    "dev-tw": "tailwindcss -i application/static/css/css-input.css -o application/static/css/index.css --watch",
+    "dev-js": "webpack --watch --mode development"
   },
   "devDependencies": {
     "daisyui": "^4.4.23",
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.3.5",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "theme-change": "^2.5.0"
   }
 }
