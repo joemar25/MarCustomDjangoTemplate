@@ -25,8 +25,8 @@ export function initDarkMode() {
 
     // Attach the click event listener to the body (event delegation)
     document.body.addEventListener("click", handleDarkModeToggle);
-    saveChangesBtn.addEventListener("click", handleSaveChangesClick);
   }
+  saveChangesBtn.addEventListener("click", handleSaveChangesClick);
 }
 
 function applyPreviousThemeSettings(savedTheme, darkModeEnabled) {
@@ -120,15 +120,13 @@ function handleSaveChangesClick() {
   localStorage.setItem("color-theme", selectedTheme);
 
   // Optionally, you can apply the selected theme immediately
-  applyDarkMode(selectedTheme);
+  applyTheme(selectedTheme);
 }
 
-export function applyDarkMode(savedTheme) {
-  const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const darkModeEnabled = savedTheme === "dark" || (!savedTheme && systemDarkMode);
-
+function applyTheme(theme) {
+  const darkModeEnabled = theme === "dark";
   document.documentElement.classList.toggle("dark", darkModeEnabled);
   updateThemeToggleIcons(darkModeEnabled);
   updateLocalStorageTheme(darkModeEnabled);
-  updateThemeSelect(darkModeEnabled ? "dark" : "light");
+  updateThemeSelect(theme);
 }

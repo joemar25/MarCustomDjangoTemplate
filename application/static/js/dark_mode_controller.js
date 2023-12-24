@@ -1,6 +1,7 @@
 // dark_mode_controller.js
 
 let darkModeInitialized = false;
+const saveChangesBtn = document.getElementById("saveChangesBtn");
 
 export function initDarkMode() {
   if (!darkModeInitialized) {
@@ -8,10 +9,13 @@ export function initDarkMode() {
 
     // Check for saved theme preference or use the system preference
     const savedTheme = localStorage.getItem("color-theme");
-    const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const systemDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
 
     // Determine the initial theme based on saved preference, system preference, or default to dark
-    const darkModeEnabled = savedTheme === "dark" || (!savedTheme && systemDarkMode);
+    const darkModeEnabled =
+      savedTheme === "dark" || (!savedTheme && systemDarkMode);
 
     // Update the icon visibility and class based on the theme
     updateThemeToggleIcons(darkModeEnabled);
@@ -21,6 +25,7 @@ export function initDarkMode() {
 
     // Attach the click event listener to the body (event delegation)
     document.body.addEventListener("click", handleDarkModeToggle);
+    saveChangesBtn.addEventListener("click", handleSaveChangesClick);
   }
 }
 
@@ -105,4 +110,25 @@ function updateThemeSelect(theme) {
 
   // Trigger a change event to update the displayed value in the modal
   themeSelect.dispatchEvent(new Event("change"));
+}
+
+function handleSaveChangesClick() {
+  // Get the selected theme from the select element
+  const selectedTheme = document.getElementById("theme").value;
+
+  // Update the local storage based on the selected theme
+  localStorage.setItem("color-theme", selectedTheme);
+
+  // Optionally, you can apply the selected theme immediately
+  applyDarkMode(selectedTheme);
+}
+
+export function applyDarkMode(savedTheme) {
+  const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const darkModeEnabled = savedTheme === "dark" || (!savedTheme && systemDarkMode);
+
+  document.documentElement.classList.toggle("dark", darkModeEnabled);
+  updateThemeToggleIcons(darkModeEnabled);
+  updateLocalStorageTheme(darkModeEnabled);
+  updateThemeSelect(darkModeEnabled ? "dark" : "light");
 }

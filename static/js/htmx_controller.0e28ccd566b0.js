@@ -25,7 +25,6 @@ function handleAfterSwap(event) {
   // Wait for a short delay before updating the icons
   setTimeout(() => {
     updateThemeToggleIcons(localStorage.getItem("color-theme") === "dark");
-    setupHtmxEventListeners(); // Re-setup event listeners after content swap
   }, 50);
 }
 
