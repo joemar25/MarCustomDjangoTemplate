@@ -1829,6 +1829,12 @@ html {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
 /* Global */
 
 :root {
@@ -1850,6 +1856,8 @@ html {
 }
 
 /* All CSS Goes Here */
+
+/* Make all text unselectable */
 
 .hover\:bg-slate-900:hover {
   --tw-bg-opacity: 1;

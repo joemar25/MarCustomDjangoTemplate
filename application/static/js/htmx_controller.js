@@ -1,15 +1,11 @@
 // htmx controller.js
 
 import { initFullscreen, updateFullscreen } from "./full_screen_controller.js";
-import { initDarkMode, applyDarkMode, updateThemeToggleIcons } from "./dark_mode_controller.js";
-
-function applyPreviousThemeSettings(savedTheme) {
-  if (savedTheme) {
-    applyDarkMode(savedTheme);
-  } else {
-    applyDarkMode(); // Apply based on system preference or default to dark
-  }
-}
+import {
+  initDarkMode,
+  applyDarkMode,
+  updateThemeToggleIcons,
+} from "./dark_mode_controller.js";
 
 function handleSaveChangesClick() {
   const selectedTheme = document.getElementById("theme").value;
@@ -19,11 +15,11 @@ function handleSaveChangesClick() {
 
 function handleAfterSwap(event) {
   initDarkMode();
-  applyDarkMode(localStorage.getItem("color-theme"));
   updateFullscreen();
 
   // Wait for a short delay before updating the icons
   setTimeout(() => {
+    applyDarkMode(localStorage.getItem("color-theme"));
     updateThemeToggleIcons(localStorage.getItem("color-theme") === "dark");
     setupHtmxEventListeners(); // Re-setup event listeners after content swap
   }, 50);

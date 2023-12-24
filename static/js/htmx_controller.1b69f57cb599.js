@@ -7,6 +7,14 @@ import {
   updateThemeToggleIcons,
 } from "./dark_mode_controller.js";
 
+function applyPreviousThemeSettings(savedTheme) {
+  if (savedTheme) {
+    applyDarkMode(savedTheme);
+  } else {
+    applyDarkMode(); 
+  }
+}
+
 function handleSaveChangesClick() {
   const selectedTheme = document.getElementById("theme").value;
   localStorage.setItem("color-theme", selectedTheme);
@@ -16,7 +24,7 @@ function handleSaveChangesClick() {
 function handleAfterSwap(event) {
   initDarkMode();
   updateFullscreen();
-
+  
   // Wait for a short delay before updating the icons
   setTimeout(() => {
     applyDarkMode(localStorage.getItem("color-theme"));

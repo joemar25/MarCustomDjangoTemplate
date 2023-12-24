@@ -25,3 +25,13 @@
 
 /* All CSS Goes Here */
 @import "https://fonts.googleapis.com/css?family=Raleway:100,400,700";
+
+/* Make all text unselectable */
+@layer utilities {
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
