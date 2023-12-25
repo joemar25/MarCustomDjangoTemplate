@@ -18,9 +18,8 @@ DATABASE_URL=""
 
 
 
-page animation loader
-
-https://loading.io/
+page animation loader from https://loading.io/, and can use some in the DaisyUI.
+in addition, i found a good guide for the skeleton since currently this time the skeleton from htmx and daisyUI and tailwind is not usefull for me. so i use manual skeleton loader that i take from this video tutorial https://www.youtube.com/watch?v=tvGR675k5No.
 
 you can use your own font-awesome but here is mine that is used in this template:
 <script src="https://kit.fontawesome.com/7a54e52029.js" crossorigin="anonymous"></script>
@@ -28,4 +27,7 @@ you can use your own font-awesome but here is mine that is used in this template
 
 component libary for tailwind css
 https://daisyui.com/
+
+
+
 
