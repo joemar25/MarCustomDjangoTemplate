@@ -2,7 +2,7 @@
 {% block content %}
 
 <dialog id="settings_modal" class="modal">
-    <div class="modal-box p-8 rounded-lg shadow-lg w-full h-full">
+    <div class="modal-box p-8 rounded-lg shadow-lg w-96 max-w-full mx-auto">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
 
@@ -10,22 +10,24 @@
 
             <!-- Theme Configuration -->
 
-            <div>
-                <label for="theme-selector" class="label"> Theme </label>
-                <select id="theme-selector" class="select capitalize" data-choose-theme>
-                    <option disabled selected> Theme </option>
-                </select>
+            <div class="mb-4">
+                <label for="theme-selector" class="label">Theme</label>
+                <div class="relative">
+                    <select id="theme-selector" class="select capitalize w-full" data-choose-theme>
+                        <option disabled selected>Select Theme</option>
+                        <!-- Add theme options here -->
+                    </select>
+                </div>
             </div>
 
-            <!-- <button id="saveChangesBtn" type="button" class="btn w-full">
-                Save Changes
-                <i class="fas fa-save"></i>
-            </button> -->
+            <div class="flex justify-center">
+                <button id="defaultButton" type="button" class="btn w-1/2 mr-2">Default</button>
+            </div>
 
         </form>
     </div>
     <form method="dialog" class="modal-backdrop">
-        <button>close</button>
+        <button> Hidden Close Button </button>
     </form>
 </dialog>
 
