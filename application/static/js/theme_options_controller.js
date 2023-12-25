@@ -49,7 +49,6 @@ export function loadThemeOptions() {
       const option = document.createElement("option");
       option.value = theme;
       option.text = theme;
-      option.classList.add("a");
 
       if (theme === currentTheme) {
         option.selected = true;
@@ -78,7 +77,7 @@ export function setDefaultTheme() {
 
   if (typeof Storage !== "undefined") {
     localStorage.setItem("theme", defaultTheme);
-    themeChange(defaultTheme); 
+    themeChange(defaultTheme);
   } else {
     console.error(
       "localStorage is not available. Theme persistence may not work."
