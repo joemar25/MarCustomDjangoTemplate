@@ -2,6 +2,9 @@
 
 import { themeChange } from "theme-change";
 
+// Object to store slider values
+const sliderValues = {};
+
 // Function to load theme options
 export function loadThemeOptions() {
   const themeValues = [
@@ -14,29 +17,6 @@ export function loadThemeOptions() {
     "synthwave",
     "retro",
     "cyberpunk",
-    "valentine",
-    "halloween",
-    "garden",
-    "forest",
-    "aqua",
-    "lofi",
-    "pastel",
-    "fantasy",
-    "wireframe",
-    "black",
-    "luxury",
-    "dracula",
-    "cmyk",
-    "autumn",
-    "business",
-    "acid",
-    "lemonade",
-    "night",
-    "coffee",
-    "winter",
-    "dim",
-    "nord",
-    "sunset",
   ];
 
   const settingsThemeSelector = document.getElementById("theme-selector");
@@ -64,11 +44,30 @@ export function loadThemeOptions() {
     if (!themeValues.includes(currentTheme)) {
       noneOption.selected = true;
     }
+
+    settingsThemeSelector.appendChild(noneOption);
   } else {
     console.error(
       "localStorage is not available. Theme persistence may not work."
     );
   }
+
+  initializeContrastSliderEventListeners();
+}
+
+// Function to update color contrast
+function updateColorContrast(value) {
+  const contrastClassName = `contrast-[.${value}]`;
+  console.log(contrastClassName);
+  document.body.className =
+    document.body.className.replace(/contrast-\[\.\d+\]/, "") +
+    " " +
+    contrastClassName;
+}
+
+// Function to update slider value in the object
+function updateSliderValue(sliderId, value) {
+  sliderValues[sliderId] = value;
 }
 
 // Function to set the default theme
@@ -78,6 +77,17 @@ export function setDefaultTheme() {
   if (typeof Storage !== "undefined") {
     localStorage.setItem("theme", defaultTheme);
     themeChange(defaultTheme);
+
+    // Reset the contrast value to 0
+    const defaultValue = 0;
+    updateColorContrast(defaultValue);
+    updateSliderValue("color-contrast-slider", defaultValue);
+
+    // Also update the slider element directly
+    const settingsColorContrastSlider = document.getElementById("color-contrast-slider");
+    if (settingsColorContrastSlider) {
+      settingsColorContrastSlider.value = defaultValue;
+    }
   } else {
     console.error(
       "localStorage is not available. Theme persistence may not work."
@@ -95,3 +105,35 @@ export function addDefaultButtonClickEvent() {
     });
   }
 }
+
+// Function to initialize contrast slider event listeners
+function initializeContrastSliderEventListeners() {
+  const settingsColorContrastSlider = document.getElementById(
+    "color-contrast-slider"
+  );
+
+  if (settingsColorContrastSlider) {
+    // Save the initial value to the sliderValues object
+    const savedValue = sliderValues[settingsColorContrastSlider.id];
+    settingsColorContrastSlider.value = savedValue || 0;
+
+    settingsColorContrastSlider.addEventListener("input", function () {
+      const contrastValue = this.value;
+      updateColorContrast(contrastValue);
+      updateSliderValue(this.id, contrastValue);
+    });
+  }
+}
+
+// Function to handle htmx afterSwap event for contrast
+function handleAfterSwapForContrast(event) {
+  initializeContrastSliderEventListeners();
+}
+
+// Set up the listener for htmx:afterSwap for contrast
+document.body.addEventListener("htmx:afterSwap", handleAfterSwapForContrast);
+
+// Initialize the page
+loadThemeOptions();
+setDefaultTheme();
+addDefaultButtonClickEvent();

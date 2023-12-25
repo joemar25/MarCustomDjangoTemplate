@@ -20,6 +20,37 @@
                 </div>
             </div>
 
+            <!-- Font Size Adjustment -->
+            <div class="mb-4">
+                <label for="font-size-selector" class="label">Font Size</label>
+                <div class="relative">
+                    <select id="font-size-selector" class="select w-full" data-adjust-font-size>
+                        <option disabled selected>Select Font Size</option>
+                        <!-- font size options here -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Color Contrast Configuration -->
+            <div class="mb-4">
+                <label for="color-contrast-slider" class="label">Color Contrast</label>
+                <div class="relative">
+                    <input type="range" id="color-contrast-slider" min="0" max="200" value="0" step="25" class="range"
+                        data-adjust-color-contrast-slider>
+                    <div class="w-full flex justify-between text-xs px-2">
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="flex justify-center">
                 <button id="defaultButton" type="button" class="btn w-1/2 mr-2">Default</button>
             </div>

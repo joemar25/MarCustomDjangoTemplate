@@ -2,11 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font */
-@import "https://fonts.googleapis.com/css?family=Raleway:100,400,700";
-
-/* Make all text unselectable */
 @layer utilities {
+  /* unselectable text */
   * {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -14,6 +11,27 @@
     user-select: none;
   }
 
+  /* font adjustments */
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  p,
+  option {
+    font-family: "Open Sans", sans-serif;
+  }
+
+  button {
+    font-family: "Raleway", sans-serif;
+  }
+
+  /* page before loading */
   .skeleton {
     color: transparent;
   }
