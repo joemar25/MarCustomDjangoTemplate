@@ -4,22 +4,22 @@
 
     {% if request.resolver_match.view_name != 'index' and request.resolver_match.view_name != '' %}
 
-    <button hx-get="{% url 'index' %}" hx-push-url="true" data-tip="Home Page"
-        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg">
+    <button hx-get="{% url 'index' %}" hx-push-url="true" hx-swap="outerHTML transition:true" data-tip="Home Page"
+        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg skeleton">
         Home
     </button>
 
     {% else %}
 
-    <button hx-get="{% url 'main' %}" hx-push-url="true" data-tip="Main Page"
-        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg">
+    <button hx-get="{% url 'main' %}" hx-push-url="true" hx-swap="outerHTML transition:true" data-tip="Main Page"
+        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg skeleton">
         Main
     </button>
 
     {% url 'admin:index' as admin_url %}
     {% if admin_url %}
-    <a href="{{ admin_url }}" title="Go to Admin Page" hx-push-url="true" data-tip="Admin Page"
-        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg">
+    <a href="{{ admin_url }}" title="Go to Admin Page" hx-push-url="true" hx-swap="outerHTML transition:true"
+        data-tip="Admin Page" class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg skeleton">
         Admin
     </a>
     {% endif %}
@@ -27,12 +27,12 @@
     {% endif %}
 
     <button id="fullscreen-btn" data-tip="Fullscreen"
-        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg">
+        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg skeleton">
         <i class="fas fa-expand"></i>
     </button>
 
     <button onclick="settings_modal.showModal()" data-tip="Settings"
-        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg">
+        class="tooltip tooltip-bottom btn cursor-pointer px-3 py-2 rounded-lg skeleton">
         <i class="fa-sharp fa-solid fa-gear"></i>
     </button>
 

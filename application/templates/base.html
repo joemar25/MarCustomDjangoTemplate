@@ -17,7 +17,7 @@
   <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
 
   {% include 'global-includes/head-css.html' %}
-
+  
 </head>
 
 <body class="flex flex-col min-h-screen" hx-target="this">
@@ -25,10 +25,9 @@
   {% include 'global-includes/loading-animation.html' %}
   {% include 'global-includes/navigation.html' %}
   {% include 'main/settings.html' %}
-  <main class="container skeleton mx-auto px-4 flex-grow">
+  <main class="container mx-auto p-4 flex-grow">
     {% block content %} {% endblock %}
   </main>
-
   {% include 'global-includes/foot-js.html' %}
 
 </body>
