@@ -2,7 +2,11 @@
 
 import { themeChange } from "theme-change";
 import { initFullscreen, updateFullscreen } from "./full_screen_controller.js";
-import { loadThemeOptions, addDefaultButtonClickEvent } from "./theme_options_controller.js";
+import {
+  loadThemeOptions,
+  addDefaultButtonClickEvent,
+  initializeContrastSliderEventListeners,
+} from "./theme_options_controller.js";
 
 // Function to handle htmx afterSwap event
 function handleAfterSwap(event) {
@@ -10,6 +14,7 @@ function handleAfterSwap(event) {
   themeChange();
   updateFullscreen();
   loadThemeOptions();
+  initializeContrastSliderEventListeners(); // Keep track of the sliders after each page swap
 }
 
 // Function to initialize the page
@@ -19,6 +24,7 @@ function initializePage() {
   themeChange(false);
   loadThemeOptions();
   addDefaultButtonClickEvent();
+  initializeContrastSliderEventListeners(); // Initialize slider event listeners on page load
 }
 
 // Initial page load

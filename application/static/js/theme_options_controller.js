@@ -2,9 +2,6 @@
 
 import { themeChange } from "theme-change";
 
-// Object to store slider values
-const sliderValues = {};
-
 // Function to load theme options
 export function loadThemeOptions() {
   const themeValues = [
@@ -47,9 +44,7 @@ export function loadThemeOptions() {
 
     settingsThemeSelector.appendChild(noneOption);
   } else {
-    console.error(
-      "localStorage is not available. Theme persistence may not work."
-    );
+    console.error("localStorage is not available. Theme persistence may not work.");
   }
 
   initializeContrastSliderEventListeners();
@@ -67,7 +62,7 @@ function updateColorContrast(value) {
 
 // Function to update slider value in the object
 function updateSliderValue(sliderId, value) {
-  sliderValues[sliderId] = value;
+  localStorage.setItem(sliderId, value);
 }
 
 // Function to set the default theme
@@ -87,11 +82,13 @@ export function setDefaultTheme() {
     const settingsColorContrastSlider = document.getElementById("color-contrast-slider");
     if (settingsColorContrastSlider) {
       settingsColorContrastSlider.value = defaultValue;
+
+      // Trigger the input event to ensure the value is updated in the HTML
+      const inputEvent = new Event("input", { bubbles: true, cancelable: true });
+      settingsColorContrastSlider.dispatchEvent(inputEvent);
     }
   } else {
-    console.error(
-      "localStorage is not available. Theme persistence may not work."
-    );
+    console.error("localStorage is not available. Theme persistence may not work.");
   }
 }
 
@@ -107,14 +104,12 @@ export function addDefaultButtonClickEvent() {
 }
 
 // Function to initialize contrast slider event listeners
-function initializeContrastSliderEventListeners() {
-  const settingsColorContrastSlider = document.getElementById(
-    "color-contrast-slider"
-  );
+export function initializeContrastSliderEventListeners() {
+  const settingsColorContrastSlider = document.getElementById("color-contrast-slider");
 
   if (settingsColorContrastSlider) {
     // Save the initial value to the sliderValues object
-    const savedValue = sliderValues[settingsColorContrastSlider.id];
+    const savedValue = localStorage.getItem(settingsColorContrastSlider.id);
     settingsColorContrastSlider.value = savedValue || 0;
 
     settingsColorContrastSlider.addEventListener("input", function () {
@@ -122,18 +117,9 @@ function initializeContrastSliderEventListeners() {
       updateColorContrast(contrastValue);
       updateSliderValue(this.id, contrastValue);
     });
+
+    // Trigger the input event to ensure the value is updated in the HTML
+    const inputEvent = new Event("input", { bubbles: true, cancelable: true });
+    settingsColorContrastSlider.dispatchEvent(inputEvent);
   }
 }
-
-// Function to handle htmx afterSwap event for contrast
-function handleAfterSwapForContrast(event) {
-  initializeContrastSliderEventListeners();
-}
-
-// Set up the listener for htmx:afterSwap for contrast
-document.body.addEventListener("htmx:afterSwap", handleAfterSwapForContrast);
-
-// Initialize the page
-loadThemeOptions();
-setDefaultTheme();
-addDefaultButtonClickEvent();
