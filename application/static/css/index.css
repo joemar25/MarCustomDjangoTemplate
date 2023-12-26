@@ -3271,6 +3271,11 @@ html {
   line-height: 1rem;
 }
 
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -3338,7 +3343,7 @@ button {
   z-index: 10;
   background: linear-gradient(90deg, #eee 0px, #fff 50%, #eee 100%);
   background-size: 200%;
-  animation: skeleton 1s infinite reverse;
+  animation: loading 1.5s infinite alternate;
 }
 
 @keyframes skeleton {

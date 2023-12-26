@@ -19,14 +19,3 @@
     integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
     crossorigin="anonymous"> </script>
 <script type="module" src="{% static 'js/index.js' %}"></script>
-<script>
-    document.addEventListener("htmx:load", function () {
-        // setTimeout(function() {
-        document.querySelector('.loader').style.display = 'none';
-        var skeleton = document.querySelectorAll('.skeleton');
-        skeleton.forEach(function (element) {
-            element.classList.remove('skeleton');
-        });
-        // }, 2000); // 2000 milliseconds = 2 seconds (used for testing the skeleton)
-    });
-</script>

@@ -1,5 +1,3 @@
-// htmx_controller.js
-
 import { themeChange } from "theme-change";
 import { initFullscreen, updateFullscreen } from "./full_screen_controller.js";
 import {
@@ -7,6 +5,7 @@ import {
   addDefaultButtonClickEvent,
   initializeContrastSliderEventListeners,
 } from "./settings_controller.js";
+import { removeSkeleton } from "./loader.js"; // Import the removeSkeleton function
 
 // Function to handle htmx afterSwap event
 function handleAfterSwap(event) {
@@ -17,9 +16,16 @@ function handleAfterSwap(event) {
   initializeContrastSliderEventListeners(); // Keep track of the sliders after each page swap
 }
 
-// Function to initialize the page
-function initializePage() {
-  console.log("Page loaded");
+// Function to initialize the page with loader
+function initializePageWithLoader() {
+  console.log("Page loaded with loader");
+
+  // Add loading class to start the animation
+  document.body.classList.add("loading");
+
+  // Call removeSkeleton from loader.js to remove the loader when content is loaded
+  removeSkeleton();
+
   initFullscreen();
   themeChange(false);
   loadThemeOptions();
@@ -27,12 +33,12 @@ function initializePage() {
   initializeContrastSliderEventListeners(); // Initialize slider event listeners on page load
 }
 
-// Initial page load
-initializePage();
+// Initial page load with loader
+initializePageWithLoader();
 
 // Handle htmx navigation for subsequent page loads
 document.body.addEventListener("htmx:load", function () {
-  initializePage();
+  initializePageWithLoader();
   document.body.removeEventListener("htmx:afterSwap", handleAfterSwap);
   document.body.addEventListener("htmx:afterSwap", handleAfterSwap);
 });

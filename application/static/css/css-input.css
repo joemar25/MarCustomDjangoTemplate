@@ -45,7 +45,7 @@
     z-index: 10;
     background: linear-gradient(90deg, #eee 0px, #fff 50%, #eee 100%);
     background-size: 200%;
-    animation: skeleton 1s infinite reverse;
+    animation: loading 1.5s infinite alternate;
   }
 
   @keyframes skeleton {
