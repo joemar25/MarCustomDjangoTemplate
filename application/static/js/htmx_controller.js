@@ -6,7 +6,7 @@ import {
   loadThemeOptions,
   addDefaultButtonClickEvent,
   initializeContrastSliderEventListeners,
-} from "./theme_options_controller.js";
+} from "./settings_controller.js";
 
 // Function to handle htmx afterSwap event
 function handleAfterSwap(event) {

@@ -44,9 +44,7 @@ export function loadThemeOptions() {
 
     settingsThemeSelector.appendChild(noneOption);
   } else {
-    console.error(
-      "localStorage is not available. Theme persistence may not work."
-    );
+    console.error("localStorage is not available. Theme persistence may not work.");
   }
 
   initializeContrastSliderEventListeners();
@@ -54,29 +52,17 @@ export function loadThemeOptions() {
 
 // Function to update color contrast
 function updateColorContrast(value) {
-  const contrastClassName = `contrast-[.${value}]`; // Corrected format
+  const contrastClassName = `contrast-[.${value}]`;
   console.log(contrastClassName);
+  
+  // Get all div and span elements within the body
+  const targetElements = document.querySelectorAll('body div, body span');
 
-  // Get the child elements of the elements with the IDs 'navigation' and 'content'
-  const navigationChildren = document.querySelectorAll("#navigation > *");
-  const contentChildren = document.querySelectorAll("#content > *");
-  const settingsChildren = document.querySelectorAll("#settings_modal > *");
-
-  // Function to update class names for these elements
-  const updateClassName = (child) => {
-    // Remove existing contrast class
-    child.className = child.className
-      .split(" ")
-      .filter((name) => !name.startsWith("contrast-"))
-      .join(" ");
-    // Add new contrast class
-    child.className += " " + contrastClassName;
-  };
-
-  // Update the class names for these elements
-  navigationChildren.forEach(updateClassName);
-  contentChildren.forEach(updateClassName);
-  settingsChildren.forEach(updateClassName);
+  // Iterate over all target elements
+  targetElements.forEach((element) => {
+    // Replace existing contrast class and add new one
+    element.className = element.className.replace(/contrast-\[\.\d+\]/, "") + " " + contrastClassName;
+  });
 }
 
 // Function to update slider value in the object
@@ -98,23 +84,16 @@ export function setDefaultTheme() {
     updateSliderValue("color-contrast-slider", defaultValue);
 
     // Also update the slider element directly
-    const settingsColorContrastSlider = document.getElementById(
-      "color-contrast-slider"
-    );
+    const settingsColorContrastSlider = document.getElementById("color-contrast-slider");
     if (settingsColorContrastSlider) {
       settingsColorContrastSlider.value = defaultValue;
 
       // Trigger the input event to ensure the value is updated in the HTML
-      const inputEvent = new Event("input", {
-        bubbles: true,
-        cancelable: true,
-      });
+      const inputEvent = new Event("input", { bubbles: true, cancelable: true });
       settingsColorContrastSlider.dispatchEvent(inputEvent);
     }
   } else {
-    console.error(
-      "localStorage is not available. Theme persistence may not work."
-    );
+    console.error("localStorage is not available. Theme persistence may not work.");
   }
 }
 
@@ -131,9 +110,7 @@ export function addDefaultButtonClickEvent() {
 
 // Function to initialize contrast slider event listeners
 export function initializeContrastSliderEventListeners() {
-  const settingsColorContrastSlider = document.getElementById(
-    "color-contrast-slider"
-  );
+  const settingsColorContrastSlider = document.getElementById("color-contrast-slider");
 
   if (settingsColorContrastSlider) {
     // Save the initial value to the sliderValues object
