@@ -1,4 +1,4 @@
-// theme_options_controller.js
+// settings_controller.js
 
 import { themeChange } from "theme-change";
 

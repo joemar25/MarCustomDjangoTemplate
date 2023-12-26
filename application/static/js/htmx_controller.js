@@ -13,7 +13,7 @@ function handleAfterSwap(event) {
   themeChange();
   updateFullscreen();
   loadThemeOptions();
-  initializeContrastSliderEventListeners(); // Keep track of the sliders after each page swap
+  initializeContrastSliderEventListeners();
 }
 
 // Function to initialize the page with loader
@@ -23,14 +23,14 @@ function initializePageWithLoader() {
   // Add loading class to start the animation
   document.body.classList.add("loading");
 
-  // Call removeSkeleton from loader.js to remove the loader when content is loaded
+  // remove the loader when content is loaded
   removeSkeleton();
 
   initFullscreen();
   themeChange(false);
   loadThemeOptions();
   addDefaultButtonClickEvent();
-  initializeContrastSliderEventListeners(); // Initialize slider event listeners on page load
+  initializeContrastSliderEventListeners();
 }
 
 // Initial page load with loader
