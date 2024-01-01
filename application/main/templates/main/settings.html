@@ -1,21 +1,21 @@
 <!-- settings.html -->
 {% block content %}
 
-<dialog id="settings_modal" class="modal">
-    <div class="modal-box p-4 sm:p-8 rounded-lg shadow-lg w-full sm:w-96 max-w-full mx-auto">
-        <form method="dialog">
+<dialog id="settings_modal" class="modal sm:h-full">
+    <div
+        class="modal-box mx-auto h-full w-full max-w-full rounded-lg p-4 shadow-lg sm:flex sm:min-h-screen sm:flex-col sm:items-center sm:p-8 lg:w-3/4 xl:w-1/2">
+        <form method="dialog" class="h-full w-full">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
 
-            <h3 class="font-bold text-lg mb-4">Settings</h3>
+            <h3 class="mb-4 text-lg font-bold">Settings</h3>
 
             <!-- Theme Configuration -->
-
             <div class="mb-4">
                 <label for="theme-selector" class="label">Theme</label>
                 <div class="relative">
-                    <select id="theme-selector" class="select capitalize w-full" data-choose-theme>
+                    <select id="theme-selector" class="select w-full capitalize" data-choose-theme>
                         <option disabled selected>Select Theme</option>
-                        <!-- theme options here done by js -->
+                        <!-- theme options populated by JavaScript -->
                     </select>
                 </div>
             </div>
@@ -24,45 +24,40 @@
             <div class="mb-4">
                 <label for="font-size-selector" class="label">Font Size</label>
                 <div class="relative">
-                    <select id="font-size-selector" class="select w-full" data-adjust-font-size>
-                        <option disabled selected>Select Font Size</option>
-                        <option value="text-sm"> Small </option>
-                        <option value="text-base"> Normal </option>
-                        <option value="text-lg"> Medium </option>
-                        <option value="text-xl"> Large </option>
-                        <option value="text-2xl"> Extra Large </option>
+                    <select id="font-size-selector" class="select w-full capitalize"" data-adjust-font-size>
+                        <!-- font size options populated by JavaScript -->
                     </select>
                 </div>
             </div>
 
-            <!-- Color Contrast Configuration -->
-            <div class="mb-4">
-                <label for="color-contrast-slider" class="label">Color Contrast</label>
-                <div class="relative">
-                    <input type="range" id="color-contrast-slider" min="0" max="200" value="0" step="25" class="range"
-                        data-adjust-color-contrast-slider>
-                    <div class="w-full flex justify-between text-xs px-2">
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                        <span>|</span>
-                    </div>
+            <!-- Font Type Adjustment -->
+            <div class=" mb-4">
+                        <label for="font-type-selector" class="label">Font Type</label>
+                        <div class="relative">
+                            <select id="font-type-selector" class="select w-full capitalize"" data-adjust-font-type>
+                        <!-- font type options populated by JavaScript -->
+                    </select>
                 </div>
             </div>
 
-            <div class="flex justify-center">
-                <button id="defaultButton" type="button" class="btn w-full sm:w-1/2 mr-2">Default</button>
+            <!-- Contrast Adjustment -->
+            <div class=" mb-4">
+                                <label for="contrast-selector" class="label">Contrast</label>
+                                <div class="relative">
+                                    <select id="contrast-selector" class="select w-full capitalize"" data-adjust-contrast>
+                        <!-- contrast options populated by JavaScript -->
+                    </select>
+                </div>
             </div>
 
+            <div class=" flex justify-center">
+                                        <button id="defaultButton" type="button"
+                                            class="btn mr-2 w-full sm:w-1/2">Default</button>
+                                </div>
         </form>
     </div>
     <form method="dialog" class="modal-backdrop">
-        <button> Hidden Close Button </button>
+        <button>Hidden Close Button</button>
     </form>
 </dialog>
 
