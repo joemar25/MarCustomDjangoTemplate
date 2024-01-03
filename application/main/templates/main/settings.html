@@ -1,59 +1,75 @@
-<!-- settings.html -->
 {% block content %}
 
-<dialog id="settings_modal" class="modal sm:h-full">
-    <div
-        class="modal-box mx-auto h-full w-full max-w-full rounded-lg p-4 shadow-lg sm:flex sm:min-h-screen sm:flex-col sm:items-center sm:p-8 lg:w-3/4 xl:w-1/2">
-        <form method="dialog" class="h-full w-full">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+<dialog id="settings_modal" class="modal">
+    <div class="modal-box mx-auto min-h-screen lg:min-h-0 w-full max-w-screen-lg rounded-lg p-4 shadow-lg lg:w-4/5 xl:w-3/5">
+        <form method="dialog" class="h-full w-full flex flex-col justify-center items-center mx-auto">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                <i class="fas fa-times"></i>
+            </button>
 
-            <h3 class="mb-4 text-lg font-bold">Settings</h3>
+            <h3 class="mb-4 text-lg font-bold text-center"> Settings </h3>
 
-            <!-- Theme Configuration -->
-            <div class="mb-4">
-                <label for="theme-selector" class="label">Theme</label>
-                <div class="relative">
-                    <select id="theme-selector" class="select w-full capitalize" data-choose-theme>
-                        <option disabled selected>Select Theme</option>
-                        <!-- theme options populated by JavaScript -->
-                    </select>
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-2 w-full text-center">
+                <!-- Font Type Adjustment -->
+                <div class="mb-4">
+                    <label for="font-type-selector" class="text-center flex flex-col items-center">
+                        <span class="text-lg">Font Type</span>
+                    </label>
+                    <div class="relative mt-2">
+                        <select id="font-type-selector" class="select select-bordered w-full max-w-xs capitalize"
+                            data-adjust-font-type>
+                            <!-- font type options populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contrast Adjustment -->
+                <div class="mb-4">
+                    <label for="contrast-selector" class="text-center flex flex-col items-center">
+                        <span class="text-lg">Contrast</span>
+                    </label>
+                    <div class="relative mt-2">
+                        <select id="contrast-selector" class="select select-bordered w-full max-w-xs capitalize"
+                            data-adjust-contrast>
+                            <!-- contrast options populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Font Size Adjustment -->
+                <div class="mb-4">
+                    <label for="font-size-selector" class="text-center flex flex-col items-center">
+                        <span class="text-lg">Font Size</span>
+                    </label>
+                    <div class="relative mt-2">
+                        <select id="font-size-selector" class="select select-bordered w-full max-w-xs capitalize"
+                            data-adjust-font-size>
+                            <!-- font size options populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Theme Configuration -->
+                <div class="mb-4">
+                    <label for="theme-selector" class="text-center flex flex-col items-center">
+                        <span class="text-lg">Theme</span>
+                    </label>
+                    <div class="relative mt-2">
+                        <select id="theme-selector" class="select select-bordered w-full max-w-xs capitalize"
+                            data-choose-theme>
+                            <option disabled selected>Select Theme</option>
+                            <!-- theme options populated by JavaScript -->
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <!-- Font Size Adjustment -->
-            <div class="mb-4">
-                <label for="font-size-selector" class="label">Font Size</label>
-                <div class="relative">
-                    <select id="font-size-selector" class="select w-full capitalize"" data-adjust-font-size>
-                        <!-- font size options populated by JavaScript -->
-                    </select>
-                </div>
+            <div class="flex justify-center mt-4 w-full">
+                <button id="defaultButton" type="button"
+                    class="btn w-1/4">
+                    <span> Default </span>
+                </button>
             </div>
-
-            <!-- Font Type Adjustment -->
-            <div class=" mb-4">
-                        <label for="font-type-selector" class="label">Font Type</label>
-                        <div class="relative">
-                            <select id="font-type-selector" class="select w-full capitalize"" data-adjust-font-type>
-                        <!-- font type options populated by JavaScript -->
-                    </select>
-                </div>
-            </div>
-
-            <!-- Contrast Adjustment -->
-            <div class=" mb-4">
-                                <label for="contrast-selector" class="label">Contrast</label>
-                                <div class="relative">
-                                    <select id="contrast-selector" class="select w-full capitalize"" data-adjust-contrast>
-                        <!-- contrast options populated by JavaScript -->
-                    </select>
-                </div>
-            </div>
-
-            <div class=" flex justify-center">
-                                        <button id="defaultButton" type="button"
-                                            class="btn mr-2 w-full sm:w-1/2">Default</button>
-                                </div>
         </form>
     </div>
     <form method="dialog" class="modal-backdrop">
