@@ -3,7 +3,7 @@
 import selectorValue from "./data/settings_option_selector_data.json";
 
 const KEY = "fontType";
-const DEFAULT_VALUE = "raleway";
+const DEFAULT_VALUE = "open-sans";
 const SELECTOR_ID = "font-type-selector";
 const ERR_MSG = "localStorage is not available";
 
