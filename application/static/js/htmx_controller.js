@@ -10,15 +10,12 @@ import {
   updateFullscreen,
 } from "./utility_controller/full_screen_controller.js";
 import {
-  
   initThemeOptions,
   initFontSizeOptions,
   initFontTypeOptions,
   initContrastOptions,
-
   updateFontSize,
   updateFontType,
-  
   defaultButtonClickEvent,
 } from "./utility_controller/settings_controller.js";
 
