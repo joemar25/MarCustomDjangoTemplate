@@ -5,35 +5,40 @@
 
 import { themeChange } from "theme-change";
 import { removeSkeleton } from "./utility_controller/loader_controller.js";
-import { initFullscreen, updateFullscreen } from "./utility_controller/full_screen_controller.js";
-import { loadThemeOptions, loadFontSizeOptions, loadFontTypeOptions, loadContrastOptions, defaultButtonClickEvent } from "./utility_controller/settings_controller.js";
+import {
+  initFullscreen,
+  updateFullscreen,
+} from "./utility_controller/full_screen_controller.js";
+import {
+  
+  initThemeOptions,
+  initFontSizeOptions,
+  initFontTypeOptions,
+  initContrastOptions,
 
-// Function to handle htmx afterSwap event
+  updateFontSize,
+  updateFontType,
+  
+  defaultButtonClickEvent,
+} from "./utility_controller/settings_controller.js";
+
 function handleAfterSwap(event) {
   console.log("htmx:afterSwap event triggered");
   themeChange();
   updateFullscreen();
-  loadThemeOptions();
-  loadFontSizeOptions();
-  loadFontTypeOptions();
-  loadContrastOptions();
+  updateFontSize();
+  updateFontType();
 }
 
-// Function to initialize the page with loader
 function initializePageWithLoader() {
-  
-  // Add loading class to start the animation
   document.body.classList.add("loading");
-
-  // remove the loader when content is loaded
   removeSkeleton();
-
   initFullscreen();
   themeChange(false);
-  loadThemeOptions();
-  loadFontSizeOptions();
-  loadFontTypeOptions();
-  loadContrastOptions();
+  initThemeOptions();
+  initFontSizeOptions();
+  initFontTypeOptions();
+  initContrastOptions();
   defaultButtonClickEvent();
 }
 

@@ -34,6 +34,6 @@
     "sunset"
   ],
   "fontSize": ["text-base", "text-sm", "text-lg", "text-xl", "text-2xl"],
-  "fontType": ["raleway", "roboto", "montserrat", "open sans"],
-  "contrast": ["normal", "high", "low"]
+  "fontType": ["raleway", "roboto", "montserrat", "open-sans"],
+  "contrast": ["normal-contrast", "high-contrast", "low-contrast"]
 }

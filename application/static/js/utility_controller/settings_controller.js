@@ -1,20 +1,23 @@
 // settings_controller.js
 
 import {
-  loadThemeOptions,
+  initThemeOptions,
   setDefaultTheme,
 } from "./settings_helpers/theme_settings.js";
 import {
-  loadFontSizeOptions,
+  initFontSizeOptions,
   setDefaultFontSize,
+  updateFontSize,
 } from "./settings_helpers/font_size_settings.js";
 import {
-  loadFontTypeOptions,
+  initFontTypeOptions,
   setDefaultFontType,
+  updateFontType,
 } from "./settings_helpers/font_type_settings.js";
 import {
-  loadContrastOptions,
+  initContrastOptions,
   setDefaultContrast,
+  updateContrast,
 } from "./settings_helpers/contrast_settings.js";
 
 /**
@@ -37,9 +40,12 @@ function defaultButtonClickEvent() {
 
 // Export those import when settings_controller.js is imported
 export {
-  loadThemeOptions,
-  loadFontSizeOptions,
-  loadFontTypeOptions,
-  loadContrastOptions,
+  initThemeOptions,
+  initFontSizeOptions,
+  initFontTypeOptions,
+  initContrastOptions,
+  updateFontSize,
+  updateFontType,
+  updateContrast,
   defaultButtonClickEvent,
 };

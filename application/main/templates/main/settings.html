@@ -1,7 +1,8 @@
 {% block content %}
 
 <dialog id="settings_modal" class="modal">
-    <div class="modal-box mx-auto min-h-screen lg:min-h-0 w-full max-w-screen-lg rounded-lg p-4 shadow-lg lg:w-4/5 xl:w-3/5">
+    <div
+        class="modal-box mx-auto min-h-screen lg:min-h-0 w-full max-w-screen-lg rounded-lg p-4 shadow-lg lg:w-4/5 xl:w-3/5">
         <form method="dialog" class="h-full w-full flex flex-col justify-center items-center mx-auto">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                 <i class="fas fa-times"></i>
@@ -18,6 +19,7 @@
                     <div class="relative mt-2">
                         <select id="font-type-selector" class="select select-bordered w-full max-w-xs capitalize"
                             data-adjust-font-type>
+                            <option disabled selected>Select Theme</option>
                             <!-- font type options populated by JavaScript -->
                         </select>
                     </div>
@@ -31,6 +33,7 @@
                     <div class="relative mt-2">
                         <select id="contrast-selector" class="select select-bordered w-full max-w-xs capitalize"
                             data-adjust-contrast>
+                            <option disabled selected>Select Theme</option>
                             <!-- contrast options populated by JavaScript -->
                         </select>
                     </div>
@@ -44,6 +47,7 @@
                     <div class="relative mt-2">
                         <select id="font-size-selector" class="select select-bordered w-full max-w-xs capitalize"
                             data-adjust-font-size>
+                            <option disabled selected>Select Theme</option>
                             <!-- font size options populated by JavaScript -->
                         </select>
                     </div>
@@ -65,8 +69,7 @@
             </div>
 
             <div class="flex justify-center mt-4 w-full">
-                <button id="defaultButton" type="button"
-                    class="btn w-1/4">
+                <button id="defaultButton" type="button" class="btn w-1/4">
                     <span> Default </span>
                 </button>
             </div>

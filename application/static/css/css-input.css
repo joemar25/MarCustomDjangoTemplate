@@ -11,24 +11,33 @@
     user-select: none;
   }
 
-  /* font adjustments */
-  body {
+  /* adjustments */
+  .raleway {
+    font-family: "Raleway", sans-serif;
+  }
+
+  .roboto {
     font-family: "Roboto", sans-serif;
   }
 
-  h1,
-  h2,
-  h3 {
+  .montserrat {
     font-family: "Montserrat", sans-serif;
   }
 
-  p,
-  option {
+  .open-sans {
     font-family: "Open Sans", sans-serif;
   }
 
-  button {
-    font-family: "Raleway", sans-serif;
+  .normal-contrast {
+    filter: contrast(1);
+  }
+
+  .high-contrast {
+    filter: contrast(2);
+  }
+
+  .low-contrast {
+    filter: contrast(0.5);
   }
 
   /* page before loading */
