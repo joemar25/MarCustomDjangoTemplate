@@ -91,6 +91,6 @@ function applyFontType(selectedType) {
   typeSelector.value = selectedType;
 }
 
-export function updateFontSize() {
+export function updateContrast() {
   initContrastOptions();
 }
