@@ -16,7 +16,7 @@ Author Note: You may use this Custom-Django Template I made, which is simplified
 ## Status
 
 1. Has admin (currently hidden by default)
-2. Integrated HTMX
+2. Integrated HTMX (removed)
 3. Used component library for the frontend main css framework
 4. Has settings
 
@@ -35,6 +35,16 @@ Author Note: You may use this Custom-Django Template I made, which is simplified
    DATABASE_URL=""
    ```
 
+3. database
+
+   just create a folder inside _core then database
+
+   application/_core/database
+
+   then run: python manage.py migrate
+
+   you may add now your models or super admin
+
 ## Tech Used
 
 1. [Nodejs](https://nodejs.org/en)
@@ -50,13 +60,13 @@ Author Note: You may use this Custom-Django Template I made, which is simplified
    Note: Component libary for tailwind css to help me write lesser codes in the html.
    here is the official website.
 
-## References:
+## References
 
 1. [Skeleton Tutorial](https://www.youtube.com/watch?v=tvGR675k5No)
 
-   Note: This is good guide for the skeleton since currently this time the skeleton from htmx and daisyUI and tailwind is not usefull for me. So I use manual skeleton loader that I take from this video.
+   <!-- Note: This is good guide for the skeleton since currently this time the skeleton from htmx and daisyUI and tailwind is not usefull for me. So I use manual skeleton loader that I take from this video. -->
 
-## Settings:
+## Settings
 
 1. `(will be added)` Font Size - Allow users to increase or decrease the font size according to their comfort.
 2. `(will be added)` Contrast Settings - Provide options to adjust color contrast, especially between text and background.

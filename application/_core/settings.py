@@ -28,8 +28,6 @@ INSTALLED_APPS = [
     # Mar: For production, we use whitenoice, just above static
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
-    # Mar: Apps here - Internal
-    "django_htmx",
     # Mar: Apps here - Third Party
     "application.main",
 ]
@@ -44,8 +42,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # Mar: Add Here, full documentation is here: https://github.com/bigskysoftware/htmx
-    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 # mar - custom
